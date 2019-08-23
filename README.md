@@ -21,7 +21,7 @@ docker run --name mynginx1 -p 8000:8000 -d --network net1  image_name_for_nginx:
 docker network connect net2 mynginx1 
 docker restart mynginx1 
 docker run --name country -d --network net1 image_name_for_country:latest 
-docker run --name country -d --network net2 image_name_for_airport:latest 
+docker run --name airport -d --network net2 image_name_for_airport:latest 
 ```
 - now you can run the application on browser by typing 
    - localhost:8000/countries 
