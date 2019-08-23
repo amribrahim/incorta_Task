@@ -1,0 +1,21 @@
+---
+
+- name: Network Getting Started First Playbook Extended
+  hosts: localhost
+  tasks:
+    - name: run nginx image
+      command: docker run --name mynginx1 -p 8000:8000 -d --network net1 mynginx1:latest
+
+    - name: attach nginx to another network 
+      command: docker network connect net2 mynginx1
+
+    - name: restart nginx image 
+      command: docker restart mynginx1
+
+    - name: run country image
+      command: docker run --name country -d --network net1 country:latest
+
+    - name: run airport1 image
+      command: docker run --name airport -d --network net2 airport1:latest
+
+

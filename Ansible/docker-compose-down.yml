@@ -1,0 +1,23 @@
+---
+
+- name: Network Getting Started First Playbook Extended
+  hosts: localhost
+  tasks:
+    - name: stop nginx container
+      command: docker stop mynginx1
+
+    - name: delete nginx container
+      command: docker rm mynginx1
+
+    - name: stop country container 
+      command: docker stop country
+
+    - name: delete country container
+      command: docker rm country
+
+    - name: stop airport container 
+      command: docker stop airport 
+   
+    - name: delete airport container
+      command: docker rm airport
+
