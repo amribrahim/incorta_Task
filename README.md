@@ -26,3 +26,21 @@ docker run --name airport -d --network net2 image_name_for_airport:latest
 - now you can run the application on browser by typing 
    - localhost:8000/countries 
    - localhost:8000/airports 
+   
+   - Finally in order to run the application by single on command you can use ansible module 
+   to act as docker compose so first make sure you have ansible install by type
+   ```
+   ansible --version
+   ```
+   - if not install you install it by typing 
+   ``` 
+   apt-get install ansible -y 
+   ``` 
+   - then you can run the application by cd to Ansible folder then run the following command 
+```
+ansible-playbook docker-compose-up.yml
+```
+- if you want to down the application and delete every thing you can type 
+```
+ansbile-playbook docker-comopse-down.yml 
+```
