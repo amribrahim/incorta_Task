@@ -1,46 +1,11 @@
-# incorta_Task
-in order to Deploy the code you should first have docker run on your machine 
-in my case in use ubuntu so you can follow the instruction in the Dcoument below to install it:
-https://docs.docker.com/v17.09/engine/installation/linux/docker-ce/ubuntu/#os-requirements
-## Follow the following instuction to run and deploy the application 
- - clone the Repo 
- - you should found 4 folders contains docker files and dependinces should found in the images 
- - cd to all folders and build the images by run: 
- ```
- docker build -t image_name . 
- ```
-- after this steps you now have four docker 3 for microservices application and the last for nginx to make reverse proxy 
-- the next step create two docker networks to seperate the application when run the containers 
-```
-docker network create net1
-docker network create net2 
-```
-- then run the images by the following commands:
-``` 
-docker run --name mynginx1 -p 8000:8000 -d --network net1  image_name_for_nginx:latest   
-docker network connect net2 mynginx1 
-docker restart mynginx1 
-docker run --name country -d --network net1 image_name_for_country:latest 
-docker run --name airport -d --network net2 image_name_for_airport:latest 
-```
-- now you can run the application on browser by typing 
-   - localhost:8000/countries 
-   - localhost:8000/airports 
-   
-- Finally in order to run the application by single on command you can use ansible module 
-  to act as docker compose so first make sure you have ansible install by type
+# Adjust Task
+This repo include all steps and files needed to setup enviroment for Adjust task , first we need to instal the following:
+## installation tools
+to setup the enviroment you need first to install the following
+- Docker to setup minikube use the following link : https://docs.docker.com/engine/install/ubuntu/
+- minikube: use the following link : https://minikube.sigs.k8s.io/docs/start/
+   - run this command to run docker in non root user to start minikube without error , where the $user is the user you are using during instalation 
    ```
-   ansible --version
+   sudo usermod -aG docker $USER && newgrp docker
    ```
-- if not install you install it by typing 
-   ``` 
-   apt-get install ansible -y 
-   ``` 
-- then you can run the application by cd to Ansible folder then run the following command 
-```
-ansible-playbook docker-compose-up.yml
-```
-- if you want to down the application and delete every thing you can type 
-```
-ansbile-playbook docker-comopse-down.yml 
-```
+
