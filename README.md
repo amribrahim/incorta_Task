@@ -8,4 +8,9 @@ to setup the enviroment you need first to install the following
    ```
    sudo usermod -aG docker $USER && newgrp docker
    ```
-
+-  kubectl : use the following link : https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
+-  ansbile: use the follwoing link : https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installing-ansible-on-ubuntu
+-  clone the Ruby app using this command
+```
+git clone https://github.com/sawasy/http_server.git
+```
