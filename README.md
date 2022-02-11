@@ -25,7 +25,7 @@ the follwing steps show the instructions to configure the enviroment
    EXPOSE 80 # expose port 80
    CMD ["/usr/local/bin/ruby", "/usr/src/app/http_server.rb"] # start ruby app when the app started 
 ```
-- Deployment file  for kubernetes contain 
+- Deployment file  for kubernetes contain: 
   - three replicas 
   - probs 
   - secuirty context to start the pod as non root user 
@@ -37,3 +37,23 @@ the follwing steps show the instructions to configure the enviroment
    docker push amribrahim00/ruby-app:latest  # push image
    kubectl set image deployment/ruby-app  ruby=amribrahim00/ruby-app:latest # set the pushed image in deployment file
   ``` 
+## run the envrioment
+to run the enviroment you need first to deploy the kubernetes files first using this command:
+```
+kubectl apply -f . 
+```
+next, in future deployment run the ansible playbook script to automate the deployment
+```
+ansible-playbook ansible-deploy.yaml
+```
+## instruction to how connect to running application 
+if your using minikube you must know the following:
+- minikube support loadbalancer but you must open parallel terminal and run the following command 
+```
+minikube tunnel
+```
+- next, go to first terminal and run the follwoing command to list kubernetes services and take external IP and port for the ruby-service service and put them in the browser and it will open the application 
+```
+kubectl get svc -A 
+```
+![image](https://user-images.githubusercontent.com/11281850/153649261-ea148ce3-84f4-4611-a8b5-1b499ab02ae3.png)
