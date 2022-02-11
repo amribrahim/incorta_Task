@@ -14,3 +14,13 @@ to setup the enviroment you need first to install the following
 ```
 git clone https://github.com/sawasy/http_server.git
 ```
+## configure the enviroment
+the follwing steps show the instructions to configure the enviroment
+- Docker file for ruby app like file in the repo to package the app based on Ruby base image
+   - FROM ruby:latest -> ruby base image 
+   - WORKDIR /usr/src/app/ -> the working directory
+   - USER 1000 -> non root user id based on /etc/passwd file
+   - ADD http_server.rb /usr/src/app/  -> add ruby file inside the docker 
+   - EXPOSE 80 -> expose port 80
+   - CMD ["/usr/local/bin/ruby", "/usr/src/app/http_server.rb"] -> start ruby app when the app started 
+- Deployment file 
