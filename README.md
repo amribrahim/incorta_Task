@@ -25,4 +25,15 @@ the follwing steps show the instructions to configure the enviroment
    EXPOSE 80 # expose port 80
    CMD ["/usr/local/bin/ruby", "/usr/src/app/http_server.rb"] # start ruby app when the app started 
 ```
-- Deployment file 
+- Deployment file  for kubernetes contain 
+  - three replicas 
+  - probs 
+  - secuirty context to start the pod as non root user 
+  - ruby image pushed in privete docker hub 
+- service file for kubernetes of Type loadbalancer to distribute the traffic accross three replicas
+- Ansible play book file contain command needed to automate the deployment
+  ```
+   docker build -t amribrahim00/ruby-app:latest .  # build the image
+   docker push amribrahim00/ruby-app:latest  # push image
+   kubectl set image deployment/ruby-app  ruby=amribrahim00/ruby-app:latest # set the pushed image in deployment file
+  ``` 
