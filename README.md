@@ -57,3 +57,9 @@ minikube tunnel
 kubectl get svc -A 
 ```
 ![image](https://user-images.githubusercontent.com/11281850/153649261-ea148ce3-84f4-4611-a8b5-1b499ab02ae3.png)
+
+## strategy/ Archticture 
+the deployment strategy for this application is to use default kubernetes deployment strategy (The rolling deployment) ,It replaces pods one by one of the previous version of our application with pods of the new version without any cluster downtime.
+the below image show the archticture for the app.
+
+![image](https://user-images.githubusercontent.com/11281850/153650592-cbe2585e-da5e-4835-9caa-b2fb82e1efdf.png)
